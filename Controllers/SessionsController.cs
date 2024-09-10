@@ -5,6 +5,7 @@ using System.Net;
 
 namespace DaniaSessionService
 {
+
     [Route("api/[controller]")]
     [ApiController]
     public class SessionsController : ControllerBase
@@ -16,7 +17,7 @@ namespace DaniaSessionService
             if (!SessionStorage.Sessions.ContainsValue(endpoint))
                 return NotFound($"No user session found for ip:{endpoint}");
 
-            return Ok($"{SessionStorage.Sessions.FirstOrDefault(x => x.Value == endpoint).Key} on ip:{endpoint} is logged in");
+            return Ok(SessionStorage.Sessions.FirstOrDefault(x => x.Value == endpoint));
         }
 
 
